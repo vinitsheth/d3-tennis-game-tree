@@ -1,5 +1,4 @@
-/* Wimbledon 2012 - Match Tree */
-/* Copyright 2013 Peter Cook (@prcweb); Licensed MIT */
+
 
 var radius = 350, numRounds = 7, segmentWidth = radius / (numRounds + 1);
 
@@ -93,7 +92,18 @@ function playerHover(d) {
 var xCenter = radius, yCenter = radius;
 var svg = d3.select('svg').append('g').attr('transform', translateSVG(xCenter,yCenter));
 
-d3.json('data/2011.json', function(err, root) {
+document.addEventListener("DOMContentLoaded", mainFun);
+
+
+
+d3.select('#year').on('change',mainFun);
+d3.select(window).on('load',mainFun());
+
+
+function mainFun(){
+
+var year = document.getElementById('year').value;
+d3.json('data/'+year+'.json', function(err, root) {
   // console.log(root);
   var chart = svg.append('g');
   chart.datum(root).selectAll('g')
@@ -146,3 +156,5 @@ d3.json('data/2011.json', function(err, root) {
   
 });
 
+
+}

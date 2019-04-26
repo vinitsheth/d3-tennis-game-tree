@@ -154,6 +154,7 @@ var svg = d3.select('svg').append('g').attr('transform', translateSVG(xCenter,yC
 
 
 d3.select('#year').on('change',mainFun);
+alert('The visualization is viewed best in Firefox \n If you want to view in any other browser run it using http server. \n To run http server using python go to the directory where the index.html file is located.\n for python 2x run \n python -m SimpleHTTPServer \n for python 3x run \n python3 -m http.server ');
 d3.select(window).on('load',mainFun());
 
 
@@ -174,7 +175,6 @@ d3.json('data/'+year+'.json', function(err, root) {
   chart.selectAll('g')
     .append('path')
     .attr('d', arc)
-    .on('click',playerClick)
     .on('mouseover', playerHover);
 
   // Round labels
